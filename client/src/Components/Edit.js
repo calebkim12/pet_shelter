@@ -20,7 +20,7 @@ class Edit extends Component {
     }
 
     componentDidMount = () => {
-        axios.get(`http://localhost:8000//api/pets/${this.props.match.params._id}`)
+        axios.get(`/api/pets/${this.props.match.params._id}`)
         .then( res => {
             this.setState({pet: res.data.pet});
         })
@@ -37,7 +37,7 @@ class Edit extends Component {
 
     updatePet = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:8000//api/pets/${this.state.pet._id}`, this.state.pet)
+        axios.put(`/api/pets/${this.state.pet._id}`, this.state.pet)
         .then( res => {
             if(res.data.errors){
                 this.setState({errors: res.data.errors.errors})

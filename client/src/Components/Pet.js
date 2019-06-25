@@ -14,7 +14,7 @@ export class Pet extends Component {
 
     componentDidMount = () => {
         console.log(this.props.match.params._id);
-        axios.get(`http://localhost:8000//api/pets/${this.props.match.params._id}`)
+        axios.get(`/api/pets/${this.props.match.params._id}`)
         .then( res => {
             this.setState({
                 pet: res.data.pet
@@ -30,7 +30,7 @@ export class Pet extends Component {
         s.pet.likes += 1;
         s.liked = true;
         this.setState(s);
-        axios.put(`http://localhost:8000/api/pets/${this.props.match.params._id}`, this.state.pet)
+        axios.put(`/api/pets/${this.props.match.params._id}`, this.state.pet)
         .then( res => {
             console.log(res);
             this.componentDidMount();
@@ -41,7 +41,7 @@ export class Pet extends Component {
     }
 
     adopt = () => {
-        axios.delete(`http://localhost:8000//api/pets/${this.props.match.params._id}`)
+        axios.delete(`/api/pets/${this.props.match.params._id}`)
             .then( res => {
                 if(res.data.errors){
                     console.log(res.data.errors.errors);
